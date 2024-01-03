@@ -10,6 +10,8 @@ export const Img = styled.img`
 
 export const BookInfo = styled.div`
   padding-top: 8px;
+  padding-bottom: 32px;
+  text-align: center;
 
   & > *:not(:first-of-type) {
     margin-top: 2px;
@@ -17,8 +19,7 @@ export const BookInfo = styled.div`
 `;
 
 export const BookTitle = styled.h4`
-  font-size: 14px;
-  line-height: 18px;
+  font-size: 20px;
   width: 137px;
   white-space: nowrap;
   overflow: hidden;
@@ -26,7 +27,16 @@ export const BookTitle = styled.h4`
 `;
 
 export const Author = styled.p`
-  font-size: 10px;
+  font-size: 14px;
+  line-height: 18px;
   font-weight: ${SIZES.WEIGHT.W500};
-  color: ${COLORS.LIGHT_GRAY};
+  color: ${COLORS.LIGHT_GRAY};  
+  margin-top: 2px;
 `;
+
+export const Pages = styled.p`
+  font-size: 10px;
+  line-height: 12px;
+  font-weight: 500;
+  margin-top: 4px;
+`

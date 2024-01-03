@@ -7,49 +7,55 @@ import {
   BooksList,
 } from './Recommended.styled';
 import BookCard from '../BookCard';
-import { getBooksRecomended } from '../../api/books';
 import Modal from '../Modal';
 import { IBook } from '../../types/data';
+import { useDispatch,useSelector } from 'react-redux';
+import { openModal, closeModal } from '../../redux/toggleModalSlice'
+import { nextPage, prevPage, getBooksThunk } from '../../redux/booksSlice';
 
 const Recommended: FC = () => {
-  const [books, setBooks] = useState([]);
   const [curentBook, setCurentBook] = useState<IBook | null>(null);
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState();
-  const [open, setOpen] = useState(false);
+  const currentPage = useSelector((state: any) => state.books.currentPage)
+  const showModal = useSelector((state: any) => state.modal.showModal);
+  const books = useSelector((state: any) => state.books.items);
+  const totalPages = useSelector((state: any) => state.books.totalPages);
+  const title = useSelector((state: any) => state.filters.title);
+  const author = useSelector((state: any) => state.filters.author)
+  const dispatch = useDispatch();
+
+  console.log(books);
+  
 
   useEffect(() => {
-    getBooksRecomended(page)
-      .then(({ totalPages, results }) => {
-        setBooks(results);
-        setTotalPages(totalPages);
-      })
-      .catch(error => console.error('Error during fetch:', error));
-  }, [page]);
+    dispatch(getBooksThunk(currentPage))
+  }, [dispatch, currentPage]);
 
   const handlerArrowBtn = (event: React.ChangeEvent<unknown>) => {
+    dispatch(nextPage(currentPage))
+
     const isNextBtn = (
       event.currentTarget as HTMLButtonElement
     ).ariaLabel?.includes('next');
 
     if (isNextBtn) {
-      setPage(prevPage => prevPage + 1);
+      dispatch(nextPage(currentPage))
     } else {
-      setPage(prevPage => prevPage - 1);
+      dispatch(prevPage(currentPage))
     }
   };
 
-  const handleOpen = (event: any) => {
+  const handlerOpenModal = (event: any) => {
     const idBook = event.target?.dataset.id;
-    const book = books.filter(({ _id }) => idBook === _id);
+    const book = books.filter(({ _id }: any) => idBook === _id)[0];
 
-    setCurentBook(book[0]);
-    setOpen(true);
+    setCurentBook(book);
+    dispatch(openModal())
   };
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const filterBook = books.filter((book: any) =>
+  (title === '' || book.title.toLowerCase().includes(title.toLowerCase())) &&
+  (author === '' || book.author.toLowerCase().includes(author.toLowerCase()))
+);
 
   return (
     <Wrapper>
@@ -57,7 +63,7 @@ const Recommended: FC = () => {
         <Title variant="h2">Recommended</Title>
         <StyledPagination
           count={totalPages}
-          page={page}
+          page={currentPage}
           onChange={handlerArrowBtn}
           variant="outlined"
         />
@@ -68,12 +74,12 @@ const Recommended: FC = () => {
         rowSpacing={2}
         sx={{ columnGap: '20px' }}
       >
-        {books &&
-          books.map(({ _id, author, imageUrl, title }) => (
-            <BookCard key={_id} id={_id} imageUrl={imageUrl} author={author} title={title} handleOpen={handleOpen}/>
+        {filterBook &&
+          filterBook.map(({ _id, author, imageUrl, title }: any) => (
+            <BookCard key={_id} id={_id} imageUrl={imageUrl} author={author} title={title} handleOpen={handlerOpenModal} />
           ))}
       </BooksList>
-      <Modal curentBook={curentBook} handleClose={handleClose} open={open}/>
+      <Modal curentBook={curentBook} open={showModal} handleClose={() => dispatch(closeModal())} />
     </Wrapper>
   );
 };

@@ -1,8 +1,9 @@
 import styled from '@emotion/styled';
-import { COLORS, SIZES } from '../../theme';
+import { COLORS } from '../../theme';
 import { Typography, Grid, Pagination, Modal } from '@mui/material';
 
 export const Wrapper = styled.div`
+  width: 100%;
   background-color: ${COLORS.DARK_GRAY};
   border-radius: 30px;
   padding: 40px;

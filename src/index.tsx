@@ -6,6 +6,9 @@ import { GlobalStyles } from '@mui/system';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import globalStyles from './globalStyles';
 import { COLORS, SIZES } from './theme';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+
 
 const theme = createTheme({
   typography: {
@@ -59,7 +62,9 @@ root.render(
   <BrowserRouter>
     <ThemeProvider theme={theme}>
       <GlobalStyles styles={globalStyles} />
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </ThemeProvider>
   </BrowserRouter>
 );
