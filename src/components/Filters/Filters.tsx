@@ -1,12 +1,11 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { Form, FormTitle, FiltersButton } from './Filters.styled';
 import StyledInput from '../StyledInput';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setFilter } from '../../redux/filtersSlice';
 
 const Filters: FC = () => {
   const dispatch = useDispatch();
-  const books = useSelector((state: any) => state.books.items)
 
   const submitHandler = (e: any) => {
     e.preventDefault();

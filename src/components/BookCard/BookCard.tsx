@@ -9,7 +9,6 @@ import { deleteBookThunk } from '../../redux/booksSlice';
 const BookCard: FC<IBook> = ({ id, imageUrl, title, author, handleOpen, totalPages, isLibraryBookCard, isModalBookCard }) => {
 
   const dispatch = useDispatch();
-  console.log(id);
   
   return (
     <Grid item >
