@@ -28,6 +28,26 @@ const theme = createTheme({
     },
   },
   components: {
+
+    MuiMenu: {
+      styleOverrides: {
+        paper: {
+          marginTop: "8px",
+          backgroundColor: `${COLORS.MIDDLE_GRAY}`,
+          borderRadius: "12px",
+          padding: "14px",
+        },
+      },
+    },
+
+    MuiMenuItem: {
+      styleOverrides: {
+        root: {
+          color: "white",
+        }
+      }
+    },
+
     MuiInput: {
       styleOverrides: {
         input: {
@@ -35,6 +55,8 @@ const theme = createTheme({
         },
       },
     },
+
+
     MuiPaginationItem: {
       styleOverrides: {
         icon: {

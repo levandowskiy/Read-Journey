@@ -23,9 +23,6 @@ const Recommended: FC = () => {
   const author = useSelector((state: any) => state.filters.author)
   const dispatch = useDispatch();
 
-  console.log(books);
-  
-
   useEffect(() => {
     dispatch(getBooksThunk(currentPage))
   }, [dispatch, currentPage]);
