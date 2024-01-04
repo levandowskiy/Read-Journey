@@ -9,10 +9,6 @@ export const Img = styled.img`
 `;
 
 export const BookInfo = styled.div`
-  padding-top: 8px;
-  padding-bottom: 32px;
-  text-align: center;
-
   & > *:not(:first-of-type) {
     margin-top: 2px;
   }
@@ -20,7 +16,7 @@ export const BookInfo = styled.div`
 
 export const BookTitle = styled.h4`
   font-size: 20px;
-  width: 137px;
+  width: 89px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -39,4 +35,23 @@ export const Pages = styled.p`
   line-height: 12px;
   font-weight: 500;
   margin-top: 4px;
+`
+
+export const Button = styled.button`
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  margin-left: 14px;
+`
+
+export const BookInterface = styled.div`
+  padding-top: 8px;
+  padding-bottom: 32px;
+  display: flex;
+
+  width: 137px;
 `

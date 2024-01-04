@@ -9,7 +9,7 @@ import {
 import BookCard from '../BookCard';
 import Modal from '../Modal';
 import { IBook } from '../../types/data';
-import { useDispatch,useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { openModal, closeModal } from '../../redux/toggleModalSlice'
 import { nextPage, prevPage, getBooksThunk } from '../../redux/booksSlice';
 
@@ -50,9 +50,9 @@ const Recommended: FC = () => {
   };
 
   const filterBook = books.filter((book: any) =>
-  (title === '' || book.title.toLowerCase().includes(title.toLowerCase())) &&
-  (author === '' || book.author.toLowerCase().includes(author.toLowerCase()))
-);
+    (title === '' || book.title.toLowerCase().includes(title.toLowerCase())) &&
+    (author === '' || book.author.toLowerCase().includes(author.toLowerCase()))
+  );
 
   return (
     <Wrapper>
@@ -73,7 +73,14 @@ const Recommended: FC = () => {
       >
         {filterBook &&
           filterBook.map(({ _id, author, imageUrl, title }: any) => (
-            <BookCard key={_id} id={_id} imageUrl={imageUrl} author={author} title={title} handleOpen={handlerOpenModal} />
+            <BookCard
+              key={_id}
+              id={_id}
+              imageUrl={imageUrl}
+              author={author}
+              title={title}
+              handleOpen={handlerOpenModal} 
+              />
           ))}
       </BooksList>
       <Modal curentBook={curentBook} open={showModal} handleClose={() => dispatch(closeModal())} />

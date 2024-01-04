@@ -61,6 +61,7 @@ const Modal: FC<ModalProps> = ({ curentBook, handleClose, open }) => {
             author={curentBook.author}
             title={curentBook.title} 
             totalPages={curentBook.totalPages}
+            isModalBookCard={true}
             />
         </div>
 
