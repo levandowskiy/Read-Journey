@@ -4,10 +4,15 @@ import { BooksList } from '../Recommended/Recommended.styled';
 import { HeaderLibraryBooks, StyledFormControl, StyledSelect, LibraryBookCard } from './LibraryBooks.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { secondFilter } from '../../redux/filtersSlice';
+import Modal from '../Modal';
+import BookList from '../BookList';
+import { Link } from 'react-router-dom';
+import StyledButton from '../../UI/StyledButton';
+import { closeModal } from '../../redux/toggleModalSlice';
 
 const LibraryBooks: FC = () => {
   const library = useSelector((state: any) => state.books.library);
-  const status = useSelector((state: any) => state.filters.status)
+  const status = useSelector((state: any) => state.filters.status);
   const dispatch = useDispatch();
 
   const handlerChange = (event: any) => {
@@ -17,8 +22,6 @@ const LibraryBooks: FC = () => {
   const libraryFilter = status === "All books" ? library : library.filter((book: any) => {
     return book.status === status.toLowerCase()
   })
-
-
 
   return (
     <>
@@ -31,9 +34,7 @@ const LibraryBooks: FC = () => {
             defaultValue={"All books"}
             value={status}
             sx={{
-
               '.MuiOutlinedInput-notchedOutline': { borderStyle: 'none' },
-
             }}
             onChange={handlerChange}
           >
@@ -44,17 +45,14 @@ const LibraryBooks: FC = () => {
           </StyledSelect>
         </StyledFormControl>
       </HeaderLibraryBooks>
-      <BooksList
-        container
-        rowSpacing={2}
-        sx={{ columnGap: '20px' }}
-      >
-        {
-          libraryFilter.map(({ imageUrl, title, author, _id }: any) => {
-            return <LibraryBookCard key={_id} id={_id} imageUrl={imageUrl} title={title} author={author} isLibraryBookCard={true} />
-          })
-        }
-      </BooksList>
+
+      <BookList books={libraryFilter} />
+      {/* <Modal buttonText={}/> */}
+      <Modal>
+        <Link to={'/reading'}>
+          <StyledButton onClick={() => dispatch(closeModal())}>Start reading</StyledButton>
+        </Link>
+      </Modal>
     </>
   );
 };

@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Form, FormTitle, FiltersButton } from './Filters.styled';
-import StyledInput from '../StyledInput';
+import StyledInput from '../../UI/StyledInput';
 import { useDispatch } from 'react-redux';
 import { setFilter } from '../../redux/filtersSlice';
 

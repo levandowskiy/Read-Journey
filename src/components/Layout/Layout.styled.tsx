@@ -56,7 +56,13 @@ export const LinkWrapper = styled.div`
   font-weight: ${SIZES.WEIGHT.W500};
   color: ${COLORS.LIGHT_GRAY};
 `;
+
 export const Container = styled.div`
   max-width: 1216px;
   margin: 0 auto;
 `;
+
+export const MainWrapper = styled.main`
+  display: flex;
+  gap: 16px;
+`

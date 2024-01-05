@@ -1,53 +1,50 @@
-import { FC, useState, useEffect } from 'react';
+import { FC, useEffect } from 'react';
 import {
   Wrapper,
   Title,
   HeaderRecommendation,
-  StyledPagination,
-  BooksList,
 } from './Recommended.styled';
-import BookCard from '../BookCard';
 import Modal from '../Modal';
-import { IBook } from '../../types/data';
 import { useDispatch, useSelector } from 'react-redux';
-import { openModal, closeModal } from '../../redux/toggleModalSlice'
-import { nextPage, prevPage, getBooksThunk } from '../../redux/booksSlice';
+import { getBooksThunk } from '../../redux/booksSlice';
+import Pagination from '../Pagination';
+import BookList from '../BookList';
+import { deleteBookThunk, addBookThunk } from '../../redux/booksSlice';
+import Notiflix from 'notiflix';
+import { closeModal } from '../../redux/toggleModalSlice';
+import StyledButton from '../../UI/StyledButton';
 
 const Recommended: FC = () => {
-  const [curentBook, setCurentBook] = useState<IBook | null>(null);
-  const currentPage = useSelector((state: any) => state.books.currentPage)
-  const showModal = useSelector((state: any) => state.modal.showModal);
+  const currentPage = useSelector((state: any) => state.books.currentPage);
   const books = useSelector((state: any) => state.books.items);
-  const totalPages = useSelector((state: any) => state.books.totalPages);
   const title = useSelector((state: any) => state.filters.title);
   const author = useSelector((state: any) => state.filters.author)
   const dispatch = useDispatch();
+  const library = useSelector((state: any) => state.books.library);
+  const curentBook = useSelector((state: any) => state.modal.currentBook);
+
 
   useEffect(() => {
     dispatch(getBooksThunk(currentPage))
   }, [dispatch, currentPage]);
+  const handleClose = () => dispatch(closeModal());
 
-  const handlerArrowBtn = (event: React.ChangeEvent<unknown>) => {
-    dispatch(nextPage(currentPage))
+  const heandlerAddBook = () => {
+    handleClose();
 
-    const isNextBtn = (
-      event.currentTarget as HTMLButtonElement
-    ).ariaLabel?.includes('next');
+    Notiflix.Notify.success('The book has been added to the library');
 
-    if (isNextBtn) {
-      dispatch(nextPage(currentPage))
-    } else {
-      dispatch(prevPage(currentPage))
-    }
-  };
+    dispatch(addBookThunk(curentBook?._id))
+  }
 
-  const handlerOpenModal = (event: any) => {
-    const idBook = event.target?.dataset.id;
-    const book = books.filter(({ _id }: any) => idBook === _id)[0];
+  const heandlerDeleteBook = () => {
+    handleClose();
 
-    setCurentBook(book);
-    dispatch(openModal())
-  };
+    Notiflix.Notify.success('The book has been deleted to the library');
+
+    const book = library.filter((item: any) => item.title === curentBook?.title)[0];
+    dispatch(deleteBookThunk(book._id))
+  }
 
   const filterBook = books.filter((book: any) =>
     (title === '' || book.title.toLowerCase().includes(title.toLowerCase())) &&
@@ -58,32 +55,13 @@ const Recommended: FC = () => {
     <Wrapper>
       <HeaderRecommendation>
         <Title variant="h2">Recommended</Title>
-        <StyledPagination
-          count={totalPages}
-          page={currentPage}
-          onChange={handlerArrowBtn}
-          variant="outlined"
-        />
+        <Pagination />
       </HeaderRecommendation>
+      <BookList books={filterBook} />
 
-      <BooksList
-        container
-        rowSpacing={2}
-        sx={{ columnGap: '20px' }}
-      >
-        {filterBook &&
-          filterBook.map(({ _id, author, imageUrl, title }: any) => (
-            <BookCard
-              key={_id}
-              id={_id}
-              imageUrl={imageUrl}
-              author={author}
-              title={title}
-              handleOpen={handlerOpenModal} 
-              />
-          ))}
-      </BooksList>
-      <Modal curentBook={curentBook} open={showModal} handleClose={() => dispatch(closeModal())} />
+      <Modal>
+        <StyledButton onClick={heandlerAddBook}>Add to library</StyledButton>
+      </Modal>
     </Wrapper>
   );
 };

@@ -18,16 +18,6 @@ export const HeaderRecommendation = styled.div`
   justify-content: space-between;
 `;
 
-export const StyledPagination = styled(Pagination)({
-  '& > ul > li:not(:first-child):not(:last-child)': {
-    display: 'none',
-  },
-
-  '& > ul > li > :first-child, & > ul > li > :last-child': {
-    borderColor: `${COLORS.LIGHT_GRAY}`,
-  },
-});
-
 export const BooksList = styled(Grid)`
   max-width: 767px;
 `
