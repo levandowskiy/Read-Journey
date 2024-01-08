@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { COLORS, SIZES } from '../../theme';
-import StyledButton from '../StyledButton';
+import StyledButton from '../../UI/StyledButton';
 
 export const Form = styled.form`
   & > :not(:last-child) {

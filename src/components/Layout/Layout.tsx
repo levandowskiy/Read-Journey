@@ -5,6 +5,7 @@ import {
   LogoWrapper,
   LogoText,
   StyledNavLink,
+  MainWrapper,
 } from './Layout.styled';
 import { Container } from '@mui/material';
 import { Suspense } from 'react';
@@ -37,9 +38,11 @@ function Layout() {
 
         <div>ШОТО</div>
       </NavBar>
-      <Suspense fallback={<div>LOADING</div>}>
-        <Outlet />
-      </Suspense>
+      <MainWrapper>
+        <Suspense fallback={<div>LOADING</div>}>
+          <Outlet />
+        </Suspense>
+      </MainWrapper>
     </Container>
   );
 }

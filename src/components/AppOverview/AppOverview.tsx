@@ -9,7 +9,6 @@ import {
   Icon,
   QuoteBlock,
 } from './AppOverview.styled';
-
 import { FaArrowRightLong } from 'react-icons/fa6';
 
 const AppOverview: FC = () => {

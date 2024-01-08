@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { FormControl, Select } from "@mui/material";
+import BookCard from "../BookCard";
 
 export const HeaderLibraryBooks = styled.div`
   display: flex;
@@ -17,5 +18,9 @@ export const StyledFormControl = styled(FormControl)`
 
 export const StyledSelect = styled(Select)`
   color: white;
-  
+`
+
+export const LibraryBookCard = styled(BookCard)`
+
+   
 `

@@ -5,6 +5,8 @@ export interface IBook {
   id?: string ;
   _id?: string;
   handleOpen?: (event: any) => void;
+  isLibraryBookCard?: boolean;
+  isModalBookCard?: boolean;
   totalPages?: number;
   addToLib?: boolean;
 }

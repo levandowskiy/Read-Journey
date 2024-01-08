@@ -19,6 +19,7 @@ export const InfoBlock = styled.div`
     margin-top: 20px;
   }
 `;
+
 export const QuoteBlock = styled(InfoBlock)`
   display: flex;
   align-items: center;

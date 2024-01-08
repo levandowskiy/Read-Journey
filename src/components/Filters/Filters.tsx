@@ -1,12 +1,11 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { Form, FormTitle, FiltersButton } from './Filters.styled';
-import StyledInput from '../StyledInput';
-import { useDispatch, useSelector } from 'react-redux';
+import StyledInput from '../../UI/StyledInput';
+import { useDispatch } from 'react-redux';
 import { setFilter } from '../../redux/filtersSlice';
 
 const Filters: FC = () => {
   const dispatch = useDispatch();
-  const books = useSelector((state: any) => state.books.items)
 
   const submitHandler = (e: any) => {
     e.preventDefault();
@@ -20,7 +19,7 @@ const Filters: FC = () => {
   }
 
   return (
-    <Form onSubmit={submitHandler} action="">
+    <Form onSubmit={submitHandler} >
       <FormTitle>Filters:</FormTitle>
       <StyledInput disableUnderline fullWidth placeholder="Book title" name="title" />
       <StyledInput disableUnderline fullWidth placeholder="The author:" name="author"/>
