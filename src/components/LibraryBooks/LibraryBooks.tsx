@@ -1,10 +1,9 @@
 import { FC } from 'react';
 import { Typography, MenuItem } from '@mui/material';
-import { BooksList } from '../Recommended/Recommended.styled';
-import { HeaderLibraryBooks, StyledFormControl, StyledSelect, LibraryBookCard } from './LibraryBooks.styled';
+import { HeaderLibraryBooks, StyledFormControl, StyledSelect } from './LibraryBooks.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import { secondFilter } from '../../redux/filtersSlice';
-import Modal from '../Modal';
+import Modal from '../../UI/Modal';
 import BookList from '../BookList';
 import { Link } from 'react-router-dom';
 import StyledButton from '../../UI/StyledButton';
@@ -47,7 +46,6 @@ const LibraryBooks: FC = () => {
       </HeaderLibraryBooks>
 
       <BookList books={libraryFilter} />
-      {/* <Modal buttonText={}/> */}
       <Modal>
         <Link to={'/reading'}>
           <StyledButton onClick={() => dispatch(closeModal())}>Start reading</StyledButton>

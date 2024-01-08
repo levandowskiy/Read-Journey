@@ -19,7 +19,7 @@ const Filters: FC = () => {
   }
 
   return (
-    <Form onSubmit={submitHandler} action="">
+    <Form onSubmit={submitHandler} >
       <FormTitle>Filters:</FormTitle>
       <StyledInput disableUnderline fullWidth placeholder="Book title" name="title" />
       <StyledInput disableUnderline fullWidth placeholder="The author:" name="author"/>

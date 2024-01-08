@@ -4,8 +4,7 @@ import {
   StyledModal,
   CloseIcon,
 } from './Modal.styled';
-import BookCard from '../BookCard';
-import ModalButton from './ModalButton';
+import BookCard from '../../components/BookCard';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 // import { IBook } from '../../types/data';
@@ -13,17 +12,17 @@ import { closeModal } from '../../redux/toggleModalSlice';
 
 
 interface ModalProps {
-  children: any;
-  // heandlerDeleteBook?: () => void;
-  // heandlerModalBtn?: () => void;
-  // buttonText: any;
+ 
+  children?: any;
+
 }
 
-const Modal: FC<ModalProps> = ({ children }) => {
+const Modal: FC<ModalProps> = ({ children: button }) => {
   const showModal = useSelector((state: any) => state.modal.showModal);
   const dispatch = useDispatch();
   const curentBook = useSelector((state: any) => state.modal.currentBook);
-
+  // console.log(children);
+  
   const handleClose = () => dispatch(closeModal());
   
   return (
@@ -40,7 +39,7 @@ const Modal: FC<ModalProps> = ({ children }) => {
             isModalBookCard={true}
           />
         </div>
-        { children }
+        { button }
         {/* <ModalButton heandlerClick={heandlerModalBtn} buttonText={buttonText}/> */}
         {/* {
           
