@@ -4,7 +4,6 @@ import {
   BookInfo,
   BookTitle,
   Author,
-  Pages,
   Button,
   BookInterface
 } from './BookCard.styled';
@@ -12,6 +11,7 @@ import { Grid } from '@mui/material';
 import { IBook } from '../../types/data';
 import { useDispatch } from 'react-redux';
 import { deleteBookThunk } from '../../redux/booksSlice';
+
 
 
 const BookCard: FC<IBook> = ({
@@ -22,26 +22,28 @@ const BookCard: FC<IBook> = ({
   handleOpen,
   totalPages,
   isLibraryBookCard,
-  isModalBookCard
+  isModalBookCard,
+  imgWidth,
+  imgHeight,
 }) => {
   const dispatch = useDispatch();
-
+  
   return (
     <Grid item >
       <Img
         data-id={id}
         onClick={handleOpen}
         src={imageUrl}
-        alt="book image"
+        alt="book image" 
+        style={{
+          width: imgWidth,
+          height: imgHeight,
+        }}
       />
       <BookInterface>
         <BookInfo>
           <BookTitle>{title}</BookTitle>
           <Author>{author}</Author>
-          {
-            isModalBookCard &&
-            <Pages>{totalPages}</Pages>
-          }
         </BookInfo>
 
         {

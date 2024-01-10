@@ -1,5 +1,10 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { getBooksRecomended, addBooksById, deleteBooksById } from '../api/books';
+import {
+  getBooksRecomended,
+  addBooksById,
+  deleteBooksById,
+  readingBook,
+} from '../api/books';
 
 export const getBooksThunk: any = createAsyncThunk(
   'books/getBooks',
@@ -22,13 +27,23 @@ export const deleteBookThunk: any = createAsyncThunk(
   }
 );
 
-const initialState:any = {
+export const readingBookThunk: any = createAsyncThunk(
+  'books/readingBook',
+  async ({ id, page, isReading }: { id: string; page: string, isReading: boolean }) => {
+    return await readingBook(id, page, isReading);
+  }
+);
+
+// readingBook
+
+const initialState: any = {
   items: [],
   isLoading: false,
   error: '',
   currentPage: 1,
   totalPages: 1,
   library: [],
+  isReading: false,
 };
 
 const booksSlice = createSlice({
@@ -60,9 +75,20 @@ const booksSlice = createSlice({
       .addCase(addBookThunk.fulfilled, (state, action) => {
         state.library.push(action.payload);
       })
-      .addCase(deleteBookThunk.fulfilled, (state, action) => {           
-        state.library = state.library.filter((book:any) => book._id !== action.payload.id);
+      .addCase(deleteBookThunk.fulfilled, (state, action) => {
+        state.library = state.library.filter(
+          (book: any) => book._id !== action.payload.id
+        );
       })
+      .addCase(readingBookThunk.fulfilled, (state, action) => {
+        const readingStatus = action.payload.readStatus
+
+        if(readingStatus === "start"){
+          state.isReading =  true; 
+        }else {
+          state.isReading =  false; 
+        }    
+      });
   },
 });
 

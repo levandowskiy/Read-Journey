@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { COLORS } from '../../theme';
-import { Typography, Grid, Pagination, Modal } from '@mui/material';
+import { Typography, Grid, Modal } from '@mui/material';
 
 export const Wrapper = styled.div`
   width: 100%;

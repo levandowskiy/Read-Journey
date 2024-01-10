@@ -15,12 +15,10 @@ export const StyledFormControl = styled(FormControl)`
   color: #0F4D81;
 }
 `
-
 export const StyledSelect = styled(Select)`
   color: white;
 `
 
 export const LibraryBookCard = styled(BookCard)`
-
    
 `

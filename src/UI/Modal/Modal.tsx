@@ -12,17 +12,14 @@ import { closeModal } from '../../redux/toggleModalSlice';
 
 
 interface ModalProps {
- 
   children?: any;
-
 }
 
 const Modal: FC<ModalProps> = ({ children: button }) => {
   const showModal = useSelector((state: any) => state.modal.showModal);
   const dispatch = useDispatch();
   const curentBook = useSelector((state: any) => state.modal.currentBook);
-  // console.log(children);
-  
+
   const handleClose = () => dispatch(closeModal());
   
   return (

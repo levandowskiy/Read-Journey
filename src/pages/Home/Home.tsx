@@ -3,6 +3,7 @@ import Dashboard from '../../UI/Dashboard';
 import Filters from '../../components/Filters';
 import AppOverview from '../../components/AppOverview';
 import Recommended from '../../components/Recommended';
+import MainSectionWrapper from '../../UI/MainSectionWrapper';
 
 const Home: FC = () => {
   return (
@@ -11,7 +12,9 @@ const Home: FC = () => {
         <Filters />
         <AppOverview />
       </Dashboard>
-      <Recommended />
+      <MainSectionWrapper>
+        <Recommended />
+      </MainSectionWrapper>
     </>
   );
 };

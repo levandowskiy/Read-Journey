@@ -16,23 +16,55 @@ export const getBooksRecomended = async (page: number) => {
 };
 
 export const addBooksById = async (id: string) => {
-  const {data} = await axios.post(`books/add/${id}`,{
+  const { data } = await axios.post(
+    `books/add/${id}`,
+    {
       id,
-  }, {
-    headers: {
-      Authorization: `Bearer ${accessToken}`,
     },
-  });
+    {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    }
+  );
 
   return data;
-}
+};
 
 export const deleteBooksById = async (id: string) => {
-  const {data} = await axios.delete(`books/remove/${id}`, {
+  const { data } = await axios.delete(`books/remove/${id}`, {
     headers: {
       Authorization: `Bearer ${accessToken}`,
     },
   });
 
   return data;
-}
+};
+
+export const readingBook = async (id: string, page: string, isReading: boolean) => {
+  let readStatus;
+
+  if(isReading){
+    readStatus = "finish";
+  }else {
+    readStatus = "start";
+  }
+
+    const { data } = await axios.post(
+      `books/reading/${readStatus}`,
+      {
+        id,
+        page
+      },
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      }
+    );
+
+
+  return {data, readStatus};
+
+ 
+};

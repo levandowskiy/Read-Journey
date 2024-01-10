@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { BooksList } from './BookList.styled'
 import BookCard from '../BookCard';
-import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { openModal } from '../../redux/toggleModalSlice'
 import { setCurrentBook } from '../../redux/toggleModalSlice';
@@ -11,7 +10,7 @@ interface BookListProps {
   books: IBook[];
 }
 
-const BookList: FC<BookListProps> = ({books}: any) => {
+const BookList: FC<BookListProps> = ({ books }: any) => {
   // const currentPage = useSelector((state: any) => state.books.currentPage)
   const dispatch = useDispatch();
 
@@ -23,7 +22,7 @@ const BookList: FC<BookListProps> = ({books}: any) => {
     dispatch(openModal())
   };
 
- 
+
   return (
     <>
       <BooksList

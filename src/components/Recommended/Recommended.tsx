@@ -14,7 +14,7 @@ const Recommended: react.FC = () => {
   const currentPage = useSelector((state: any) => state.books.currentPage);
   const books = useSelector((state: any) => state.books.items);
   const title = useSelector((state: any) => state.filters.title);
-  const author = useSelector((state: any) => state.filters.author)
+  const author = useSelector((state: any) => state.filters.author);
   const dispatch = useDispatch();
 
   react.useEffect(() => {

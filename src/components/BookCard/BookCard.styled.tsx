@@ -50,7 +50,7 @@ export const Button = styled.button`
 
 export const BookInterface = styled.div`
   padding-top: 8px;
-  padding-bottom: 32px;
+  /* padding-bottom: 32px; */
   display: flex;
 
   width: 137px;

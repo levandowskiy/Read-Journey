@@ -9,4 +9,6 @@ export interface IBook {
   isModalBookCard?: boolean;
   totalPages?: number;
   addToLib?: boolean;
+  imgWidth?: any;
+  imgHeight?: any;
 }

@@ -13,9 +13,10 @@ const Filters: FC = () => {
     const form = e.target;
     const formData = new FormData(form)
     const inputTitleValue: any = formData.get("title");
-    const inputAuthorValue: any = formData.get("author")
+    const inputAuthorValue: any = formData.get("author");
     
-    dispatch(setFilter({inputTitleValue, inputAuthorValue}))
+    dispatch(setFilter({inputTitleValue, inputAuthorValue}));
+    form.reset();
   }
 
   return (
