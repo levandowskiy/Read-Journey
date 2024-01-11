@@ -6,12 +6,10 @@ import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { readingBookThunk } from '../../redux/booksSlice';
 
-
-
 const AddReading: FC = () => {
   const dispatch = useDispatch();
-  const id = useSelector((state: any) => state.modal.currentBook._id)
-  const isReading = useSelector((state: any) => state.books.isReading)
+  const id = useSelector((state: any) => state.modal.currentBook._id);
+  const isReading = useSelector((state: any) => state.books.isReading);
 
   const handlerSubmit = (e: any) => {
     e.preventDefault();
@@ -40,7 +38,6 @@ const AddReading: FC = () => {
           :
           <StyledButton type='submit'>To start</StyledButton>
       }
-
     </form>
   );
 };

@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import { Modal } from "@mui/material";
 import {COLORS} from '../../theme'
-import { IoClose } from 'react-icons/io5';
 
 export const StyledModal = styled(Modal)`
   display: flex;
@@ -25,10 +24,9 @@ export const ModalWrapper = styled.div`
   align-items: center;
 `;
 
-export const CloseIcon = styled(IoClose)`
+export const CloseIcon = styled.svg`
   width: 22px;
   height: 22px;
-  display: block;
   margin-left: auto;
   margin-bottom: 12px;
   cursor: pointer;

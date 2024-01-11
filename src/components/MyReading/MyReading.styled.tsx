@@ -16,3 +16,16 @@ export const Wrapper = styled.div`
   border-radius: 30px;
   padding: 40px;
 `
+
+const iconStyled = `
+  width: 50px;
+  height: 50px;
+`
+
+export const RecordIcon = styled.svg`
+ ${iconStyled}
+`
+
+export const StopIcon = styled.svg`
+  ${iconStyled}
+`

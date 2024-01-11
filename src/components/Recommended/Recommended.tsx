@@ -33,7 +33,7 @@ const Recommended: react.FC = () => {
         <Pagination />
       </HeaderRecommendation>
 
-      <BookList books={filterBook} />
+      <BookList books={filterBook} cardButton={false}/>
       <ModalAddToLibrary/>
     </Wrapper>
   );

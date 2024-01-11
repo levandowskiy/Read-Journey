@@ -45,7 +45,7 @@ const LibraryBooks: FC = () => {
         </StyledFormControl>
       </HeaderLibraryBooks>
 
-      <BookList books={libraryFilter} />
+      <BookList books={libraryFilter} cardButton={true}/>
       <Modal>
         <Link to={'/reading'}>
           <StyledButton onClick={() => dispatch(closeModal())}>Start reading</StyledButton>

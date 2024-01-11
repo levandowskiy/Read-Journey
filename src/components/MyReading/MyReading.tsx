@@ -1,8 +1,14 @@
 import { FC } from 'react';
-import { CardWrapper, Wrapper } from './MyReading.styled';
+import {
+  CardWrapper,
+  Wrapper,
+  RecordIcon,
+  StopIcon,
+} from './MyReading.styled';
 import { Typography } from '@mui/material';
 import BookCard from '../BookCard';
 import { useSelector } from 'react-redux';
+import svg from '../../assets/img/sprite.svg';
 
 const MyReading: FC = () => {
   const curentBook = useSelector((state: any) => state.modal.currentBook);
@@ -25,21 +31,16 @@ const MyReading: FC = () => {
           imgWidth={224}
           imgHeight={340}
         />
+
         {isReading ?
-          <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="25" cy="25" r="24" stroke="#F9F9F9" stroke-width="2" />
-            <rect x="15" y="15" width="20" height="20" rx="3" fill="#E90516" />
-          </svg>
+          <StopIcon>
+             <use href={svg+"#icon-stopRecord"}></use>
+          </StopIcon>
           :
-          <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="25" cy="25" r="20" fill="#E90516" />
-            <circle cx="25" cy="25" r="24" stroke="#F9F9F9" stroke-width="2" />
-          </svg>
+          <RecordIcon>
+            <use href={svg+"#icon-record"}></use>
+          </RecordIcon>
         }
-
-
-
-
       </CardWrapper>
     </Wrapper>
   );

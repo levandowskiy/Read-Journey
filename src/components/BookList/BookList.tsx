@@ -8,9 +8,10 @@ import { IBook } from '../../types/data';
 
 interface BookListProps {
   books: IBook[];
+  cardButton: boolean;
 }
 
-const BookList: FC<BookListProps> = ({ books }: any) => {
+const BookList: FC<BookListProps> = ({ books, cardButton }: any) => {
   // const currentPage = useSelector((state: any) => state.books.currentPage)
   const dispatch = useDispatch();
 
@@ -39,6 +40,7 @@ const BookList: FC<BookListProps> = ({ books }: any) => {
               author={author}
               title={title}
               handleOpen={handlerOpenModal}
+              cardButton={cardButton}
             />
           ))}
       </BooksList>

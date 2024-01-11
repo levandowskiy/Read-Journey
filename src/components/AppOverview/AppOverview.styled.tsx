@@ -56,3 +56,8 @@ export const StyledLink = styled(Link)`
 export const Icon = styled.p`
   font-size: 40px;
 `;
+
+export const ArrowRight = styled.svg`
+  width: 24px;
+  height: 24px;
+`

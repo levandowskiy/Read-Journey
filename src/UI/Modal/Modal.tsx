@@ -7,8 +7,8 @@ import {
 import BookCard from '../../components/BookCard';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-// import { IBook } from '../../types/data';
 import { closeModal } from '../../redux/toggleModalSlice';
+import svg from '../../assets/img/sprite.svg';
 
 
 interface ModalProps {
@@ -26,7 +26,9 @@ const Modal: FC<ModalProps> = ({ children: button }) => {
     curentBook &&
     <StyledModal open={showModal} onClose={handleClose}>
       <ModalWrapper>
-        <CloseIcon onClick={handleClose} />
+        <CloseIcon onClick={handleClose}>
+          <use  href={svg+'#icon-close'}></use>
+        </CloseIcon>
         <div>  
           <BookCard id={curentBook.id}
             imageUrl={curentBook.imageUrl}

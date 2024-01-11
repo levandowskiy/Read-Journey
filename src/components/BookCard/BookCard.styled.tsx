@@ -23,7 +23,7 @@ export const BookTitle = styled.h4`
 `;
 
 export const Author = styled.p`
-  font-size: 14px;
+  font-size: 10px;
   line-height: 18px;
   font-weight: ${SIZES.WEIGHT.W500};
   color: ${COLORS.LIGHT_GRAY};  
@@ -54,4 +54,9 @@ export const BookInterface = styled.div`
   display: flex;
 
   width: 137px;
+`
+
+export const Icon = styled.svg`
+  width: 28px;
+  height: 28px;
 `

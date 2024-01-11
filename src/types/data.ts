@@ -11,4 +11,5 @@ export interface IBook {
   addToLib?: boolean;
   imgWidth?: any;
   imgHeight?: any;
+  cardButton?:any
 }

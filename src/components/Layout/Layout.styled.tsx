@@ -37,6 +37,7 @@ export const NavBar = styled(AppBar)`
 
 export const LogoWrapper = styled.div`
   display: flex;
+  align-items: center;
   gap: 4px;
 `;
 
@@ -65,4 +66,9 @@ export const Container = styled.div`
 export const MainWrapper = styled.main`
   display: flex;
   gap: 16px;
+`
+
+export const Logo = styled.svg`
+  width: 42px;
+  height: 74px;
 `
